@@ -3,10 +3,16 @@ package utulities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 
 public class Driver {
+    private Driver(){
+
+    }
     //daha fazla kontrol imkanı ve extends kullnamdan driver a ulasmak icin
     //webdriver objesini Driver classındaki static bir method ile olusturacgız
     /*
@@ -17,10 +23,28 @@ public class Driver {
      */
 
     public static WebDriver driver;
+
     public static WebDriver getdriever(){
-        WebDriverManager.chromedriver().setup();
+        String istenenBrowser=ConfigReader.getProperty("browser");
+
         if (driver==null){
-            driver=new ChromeDriver();
+            switch (istenenBrowser){
+                case "firefox" :
+                    WebDriverManager.firefoxdriver().setup();
+                    driver=new FirefoxDriver();
+                    break;
+                case "edge" :
+                    WebDriverManager.edgedriver().setup();
+                    driver=new EdgeDriver();
+                    break;
+                case "safari" :
+                    WebDriverManager.safaridriver().setup();
+                    driver=new SafariDriver();
+                    break;
+                default:
+                    WebDriverManager.chromedriver().setup();
+                    driver=new ChromeDriver();
+            }
         }
 
 

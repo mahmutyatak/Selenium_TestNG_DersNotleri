@@ -9,7 +9,7 @@ import utulities.Driver;
 
 public class C05_softAssert {
 
-    @Test
+    @Test(groups = {"mr1","mr2"})
     public void amazonTesti(){
         // genelde dogrulayın(verify) derlerse softAssert test edin derse HardAssert kullanılır
         //amazon anasayfaya gidip,dogru syfaya gittigimizi dogrulayin(verify)

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import pages.QdPage;
 import utulities.ConfigReader;
 import utulities.Driver;
-import utulities.ReusableMethods;
+import utulities.ReusableMethodsE;
 
 public class C03_NegatifLoginTesti {
     //qd anasayfayagidin
@@ -15,19 +15,20 @@ public class C03_NegatifLoginTesti {
     //2- gecersiz username gecerli password
     //3- gecersiz username gecersiz password
     QdPage qdPage=new QdPage();
-    @Test
+    @Test(groups = "smoke")
     public void nagatifLogin1(){
+        qdPage=new QdPage();
         Driver.getdriever().get(ConfigReader.getProperty("qdUrl"));
         qdPage.ilkLoginLinki.click();
         qdPage.emailKutusu.sendKeys(ConfigReader.getProperty("qdGecerliUsername"));
         qdPage.passwordKutusu.sendKeys(ConfigReader.getProperty("qdGecersizPassword"));
         qdPage.cookie.click();
-        ReusableMethods.bekle(2);
+        ReusableMethodsE.bekle(2);
         qdPage.loginButonu.click();
         Assert.assertTrue(qdPage.loginButonu.isEnabled());
         Driver.closeDriver();
     }
-    @Test
+    @Test(groups = "smoke")
     public void nagatifLogin2(){
         qdPage=new QdPage();
         Driver.getdriever().get(ConfigReader.getProperty("qdUrl"));
@@ -35,7 +36,7 @@ public class C03_NegatifLoginTesti {
         qdPage.emailKutusu.sendKeys(ConfigReader.getProperty("qdGecersizUsername"));
         qdPage.passwordKutusu.sendKeys(ConfigReader.getProperty("qdGecerliPassword"));
         qdPage.cookie.click();
-        ReusableMethods.bekle(2);
+        ReusableMethodsE.bekle(2);
         qdPage.loginButonu.click();
         Assert.assertTrue(qdPage.loginButonu.isEnabled());
         Driver.closeDriver();
@@ -48,7 +49,7 @@ public class C03_NegatifLoginTesti {
         qdPage.emailKutusu.sendKeys(ConfigReader.getProperty("qdGecersizUsername"));
         qdPage.passwordKutusu.sendKeys(ConfigReader.getProperty("qdGecersizPassword"));
         qdPage.cookie.click();
-        ReusableMethods.bekle(2);
+        ReusableMethodsE.bekle(2);
         qdPage.loginButonu.click();
         Assert.assertTrue(qdPage.loginButonu.isEnabled());
         Driver.closeDriver();

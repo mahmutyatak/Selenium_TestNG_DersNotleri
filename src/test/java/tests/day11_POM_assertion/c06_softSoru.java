@@ -7,13 +7,14 @@ import org.testng.asserts.SoftAssert;
 import pages.WebappsecurityPage;
 import utulities.ConfigReader;
 import utulities.Driver;
-import utulities.ReusableMethods;
+import utulities.ReusableMethodsE;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class c06_softSoru {
-    @Test
+    @Test(groups ={"smoke","mr1"} )
     public void webappTesti(){
         //1. “http://zero.webappsecurity.com/” Adresine gidin
         Driver.getdriever().get(ConfigReader.getProperty("webappUrl"));
@@ -49,17 +50,13 @@ public class c06_softSoru {
         List<WebElement> ddmoptions=select.getOptions();
         // bir method yaptik webelementleri gonderecegiz string olarak gelecek.
 
-        List<String> actualoptionStringList= ReusableMethods.StringListecevir(ddmoptions);
-        String [] expectedArr={"Select One", "Australia (dollar)", "Canada (dollar)","Switzerland (franc)","China (yuan)","Denmark (krone)",
-                "Eurozone (euro)","Great Britain (pound)","Hong Kong (dollar)","Japan (yen)",
-                "Mexico (peso)","Norway (krone)","New Zealand (dollar)","Sweden (krona)","Singapore (dollar)","Thailand (baht)"};
-        List<String> expectedOptionListesi=new ArrayList<>();
-        for (String each:expectedArr
-             ) {
-            expectedOptionListesi.add(each);
-        }
+        List<String> actualoptionStringList= ReusableMethodsE.StringListecevir(ddmoptions);
 
-        softAssert.assertEquals(actualoptionStringList,expectedOptionListesi);
+        List<String> expectedList=new ArrayList<>(Arrays.asList("Select One", "Australia (dollar)", "Canada (dollar)","Switzerland (franc)","China (yuan)","Denmark (krone)",
+                "Eurozone (euro)","Great Britain (pound)","Hong Kong (dollar)","Japan (yen)",
+                "Mexico (peso)","Norway (krone)","New Zealand (dollar)","Sweden (krona)","Singapore (dollar)","Thailand (baht)"));
+
+        softAssert.assertEquals(actualoptionStringList,expectedList);
         softAssert.assertAll();
         Driver.closeDriver();
     }

@@ -5,12 +5,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.FacebookPage;
 import utulities.Driver;
-import utulities.ReusableMethods;
+import utulities.ReusableMethodsE;
 
 public class C04_facebookTest {
 
 
-    @Test
+    @Test(groups = "smoke")
     public void facebootesti(){
         //1 - https://www.facebook.com/ adresine gidin
         Driver.getdriever().get("https://www.facebook.com/");
@@ -22,9 +22,9 @@ public class C04_facebookTest {
                 facebookPage.password.sendKeys(faker.internet().password());
                 facebookPage.login.click();
         //4- Basarili giris yapilamadigini test edin
-        ReusableMethods.bekle(3);
+        ReusableMethodsE.bekle(3);
         Assert.assertTrue(facebookPage.girisYapilamadiYaziElementi.isDisplayed());
-        ReusableMethods.bekle(3);
+        ReusableMethodsE.bekle(3);
         Driver.closeDriver();
 
     }
