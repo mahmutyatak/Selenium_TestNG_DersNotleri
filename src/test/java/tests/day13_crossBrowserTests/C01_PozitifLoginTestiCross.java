@@ -5,14 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.QdPage;
-import utulities.ConfigReader;
-import utulities.Driver;
-import utulities.DriverCross;
-import utulities.ReusableMethodsE;
+import utulities.*;
 
-public class C01_PozitifLoginTestiCross extends utilities.TestBaseCross {
+public class C01_PozitifLoginTestiCross extends TestBaseCross {
 
-    @Test(groups = "smoke")
+    @Test
     public void pozitifLoginTesti(){
         // qdemy anasayfaya gidin
 
