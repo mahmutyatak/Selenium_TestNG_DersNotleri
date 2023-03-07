@@ -22,7 +22,7 @@ public class C05_softAssert {
         //nutella icin arama yapıp sonucalrın nutelalla icerdigini dogrulayın
         AmazonPage amazonPage=new AmazonPage();
         amazonPage.aramaKutusu.sendKeys(ConfigReader.getProperty("amazonAranacakkelime")+ Keys.ENTER);
-        expectedIcerik="Kutella";
+        expectedIcerik="Nutella";
         String actualAramaSonucYazisi=amazonPage.aramaSonucElementi.getText();
         softAssert.assertTrue(actualAramaSonucYazisi.contains(expectedIcerik),"ARAMA SONUCU NUTELLA ICERMİYOR");
         // ilk urune tıklayıp urun isminde nutella gectigini dogrulayın
