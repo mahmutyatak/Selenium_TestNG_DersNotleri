@@ -2,7 +2,7 @@
 <suite name="paralel class calistirma" thread-count="2" parallel="tests" verbose="3">
     <test name="Paralel Calisma1">
         <classes>
-            <class name="tests.day12_Driver_xmlFiles.C02_ReusableMethodsSwitchingWindow"></class>
+
             <class name="tests.day11_POM_assertion.C05_softAssert"></class>
         </classes>
     </test>
